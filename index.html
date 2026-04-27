@@ -4,8 +4,10 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Allura&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
 <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -73,7 +75,8 @@
                     "fontFamily": {
                         "headline": ["Manrope"],
                         "body": ["Inter"],
-                        "label": ["Inter"]
+                      "label": ["Inter"],
+                      "signature": ["Allura", "cursive"]
                     }
                 },
             }
@@ -88,6 +91,45 @@
         .glass-panel {
             background: rgba(25, 37, 64, 0.6);
             backdrop-filter: blur(24px);
+        }
+
+        @keyframes nameReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes nameFloat {
+          0%, 100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-6px);
+          }
+        }
+
+        @keyframes nameGradient {
+          0%, 100% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+        }
+
+        @media (prefers-reduced-motion: no-preference) {
+            .name-reveal {
+                opacity: 0;
+                transform: translateY(12px);
+            background-size: 200% 200%;
+            background-position: 0% 50%;
+            will-change: transform, opacity, background-position;
+            animation:
+              nameReveal 900ms ease-out 200ms forwards,
+              nameFloat 4s ease-in-out 1200ms infinite,
+              nameGradient 6s ease-in-out 1200ms infinite;
+            }
         }
     </style>
 </head>
@@ -128,18 +170,18 @@
 <div class="absolute bottom-1/4 -left-24 w-[360px] h-[360px] sm:w-[500px] sm:h-[500px] bg-tertiary/10 rounded-full blur-[140px]"></div>
 <div class="max-w-screen-2xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 sm:gap-16 items-center">
 <div class="lg:col-span-7">
-<span class="inline-block px-4 sm:px-6 py-2 rounded-full bg-surface-container-high text-primary text-lg sm:text-xl lg:text-2xl font-extrabold tracking-[0.25em] uppercase mb-8 sm:mb-12 border border-outline-variant/20" style="">
+<span class="inline-block px-4 sm:px-6 py-2 rounded-full bg-surface-container-high text-primary text-lg sm:text-xl lg:text-2xl font-extrabold tracking-[0.25em] uppercase mb-8 sm:mb-12 border border-outline-variant/20">
                         Junior Frontend Developer
                     </span>
-<h1 class="text-5xl sm:text-7xl lg:text-[8rem] font-extrabold tracking-tighter leading-[0.9] lg:leading-[0.85] mb-8 sm:mb-12 text-on-background" style="">
-                        Crafting <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-tertiary to-primary-container" style="">Immersive</span> <br/> Digital Environments.
+<h1 class="text-5xl sm:text-7xl lg:text-[8rem] font-extrabold tracking-tighter leading-[0.9] lg:leading-[0.85] mb-8 sm:mb-12 text-on-background">
+            Crafting <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-tertiary to-primary-container">Immersive</span> <br/> Digital Environments.
                     </h1>
-<p class="text-lg sm:text-2xl lg:text-3xl text-on-surface-variant max-w-2xl leading-relaxed font-light mb-10 sm:mb-16" style="">
+<p class="text-lg sm:text-2xl lg:text-3xl text-on-surface-variant max-w-2xl leading-relaxed font-light mb-10 sm:mb-16">
                         I build high-performance, aesthetically driven interfaces where precision meets atmosphere. Specialized in React, TypeScript, and the art of the modern web.
                     </p>
 <div class="flex flex-wrap items-center gap-4 sm:gap-6">
-<a class="px-5 sm:px-8 py-4 sm:py-6 bg-gradient-to-br from-primary to-primary-container text-on-primary rounded-md font-bold text-base sm:text-xl hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300" href="#" style="">Download CV</a>
-<a class="px-5 sm:px-8 py-4 sm:py-6 text-primary border border-outline-variant/30 rounded-md font-bold text-base sm:text-xl hover:bg-surface-container-low transition-all duration-300 flex items-center gap-3" href="#contact" style="">
+<a class="px-5 sm:px-8 py-4 sm:py-6 bg-gradient-to-br from-primary to-primary-container text-on-primary rounded-md font-bold text-base sm:text-xl transition-all duration-300 hover:shadow-[0_0_60px_-14px_var(--tw-shadow-color)] hover:shadow-primary/60" href="#">Download CV</a>
+<a class="px-5 sm:px-8 py-4 sm:py-6 text-primary border border-outline-variant/30 rounded-md font-bold text-base sm:text-xl hover:bg-surface-container-low transition-all duration-300 flex items-center gap-3" href="#contact">
 <span class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></span>
                             Available for Remote work
                         </a>
@@ -148,9 +190,14 @@
 <!-- Profile Image Card -->
 <div class="lg:col-span-5 relative flex justify-center lg:justify-end mt-10 lg:mt-0">
 <div class="relative w-full max-w-xs sm:max-w-sm lg:max-w-md">
-<div class="aspect-square rounded-2xl overflow-hidden bg-surface-container-highest border border-outline-variant/20 shadow-2xl">
-<img alt="Vivian Twinomugisha" class="w-full h-full object-cover opacity-100" data-alt="Professional portrait of a focused female developer in a modern architectural office setting with soft geometric shadows" src="https://lh3.googleusercontent.com/aida/ADBb0uh9OeRUdCehGu2aNeW8Tte-PkDFnXwkMC1gjedSSlCU291u_t7kqZyZEvV8fadTj5b3tlpQguSLsUS71gNrpYk8pzG5JxpOzQbi2p_i8YmhWyeVfIbetKpwds4grDuIRS2XAmogmHVEeMs8XKpBYSMdwC4Rp-BEYKjOYC1IVCVF9wXm9fCtsNDDNY1Av76ACYTDnV4cFpA6TvWyz7074Y3JuqWxPxG6Sv9Zn0538cA5HCbQZuTUXXOveYnI3oLD77FozV4CL0wrPg" style=""/>
+<div class="relative">
+<div class="pointer-events-none absolute -inset-6 rounded-2xl bg-gradient-to-br from-primary/25 via-tertiary/15 to-primary-container/20 blur-2xl opacity-80"></div>
+<div class="pointer-events-none absolute -inset-1 rounded-2xl bg-gradient-to-br from-primary/35 via-tertiary/25 to-primary-container/30 opacity-70"></div>
+<div class="relative aspect-[4/5] lg:aspect-[3/4] rounded-2xl overflow-hidden bg-surface-container-highest border border-outline-variant/20 shadow-2xl shadow-primary/60">
+<img alt="Vivian Twinomugisha" class="w-full h-full object-cover object-center opacity-100" data-alt="Professional portrait of a focused female developer in a modern architectural office setting with soft geometric shadows" src="https://lh3.googleusercontent.com/aida/ADBb0uh9OeRUdCehGu2aNeW8Tte-PkDFnXwkMC1gjedSSlCU291u_t7kqZyZEvV8fadTj5b3tlpQguSLsUS71gNrpYk8pzG5JxpOzQbi2p_i8YmhWyeVfIbetKpwds4grDuIRS2XAmogmHVEeMs8XKpBYSMdwC4Rp-BEYKjOYC1IVCVF9wXm9fCtsNDDNY1Av76ACYTDnV4cFpA6TvWyz7074Y3JuqWxPxG6Sv9Zn0538cA5HCbQZuTUXXOveYnI3oLD77FozV4CL0wrPg"/>
 </div>
+</div>
+<p class="name-reveal mt-4 text-center font-signature font-normal text-4xl sm:text-5xl leading-none text-transparent bg-clip-text bg-gradient-to-r from-primary via-tertiary to-primary-container">Vivian Twinomugisha</p>
 </div>
 </div>
 </div>
@@ -160,54 +207,117 @@
 <div class="max-w-screen-2xl mx-auto">
 <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 sm:mb-16 lg:mb-24 gap-6 sm:gap-12">
 <div class="max-w-3xl">
-<h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6 sm:mb-8" style="">Mastering the Stack.</h2>
-<p class="text-on-surface-variant text-lg sm:text-xl lg:text-2xl" style="">A curated selection of technologies I use to bring complex visions to life with technical rigor.</p>
+<h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6 sm:mb-8">Mastering the Stack.</h2>
+<p class="text-on-surface-variant text-lg sm:text-xl lg:text-2xl">A curated selection of technologies I use to bring complex visions to life with technical rigor.</p>
 </div>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
 <!-- Frontend -->
 <div class="p-6 sm:p-8 lg:p-10 rounded-2xl bg-surface-container border border-outline-variant/5">
-<h3 class="text-primary text-2xl font-extrabold uppercase tracking-[0.25em] mb-6 sm:mb-8" style="">Frontend</h3>
+<h3 class="text-primary text-2xl font-extrabold uppercase tracking-[0.25em] mb-6 sm:mb-8">Frontend</h3>
 <div class="flex flex-wrap gap-3">
-<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base" style="">HTML</span>
-<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base" style="">CSS</span>
-<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base" style="">JS</span>
-<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base" style="">React</span>
-<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base" style="">Vue</span>
-<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base" style="">Tailwind CSS</span>
-<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base" style="">Bootstrap</span>
-<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base" style="">Vanilla CSS</span>
+<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base inline-flex items-center gap-2">
+  <span class="iconify text-lg" aria-hidden="true" data-icon="simple-icons:html5"></span>
+  HTML
+</span>
+<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base inline-flex items-center gap-2">
+  <span class="iconify text-lg" aria-hidden="true" data-icon="simple-icons:css3"></span>
+  CSS
+</span>
+<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base inline-flex items-center gap-2">
+  <span class="iconify text-lg" aria-hidden="true" data-icon="simple-icons:javascript"></span>
+  JS
+</span>
+<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base inline-flex items-center gap-2">
+  <span class="iconify text-lg" aria-hidden="true" data-icon="simple-icons:react"></span>
+  React
+</span>
+<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base inline-flex items-center gap-2">
+  <span class="iconify text-lg" aria-hidden="true" data-icon="simple-icons:vuedotjs"></span>
+  Vue
+</span>
+<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base inline-flex items-center gap-2">
+  <span class="iconify text-lg" aria-hidden="true" data-icon="simple-icons:tailwindcss"></span>
+  Tailwind CSS
+</span>
+<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base inline-flex items-center gap-2">
+  <span class="iconify text-lg" aria-hidden="true" data-icon="simple-icons:bootstrap"></span>
+  Bootstrap
+</span>
+<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base inline-flex items-center gap-2">
+  <span class="iconify text-lg" aria-hidden="true" data-icon="simple-icons:css3"></span>
+  Vanilla CSS
+</span>
 </div>
 </div>
 <!-- Backend -->
 <div class="p-6 sm:p-8 lg:p-10 rounded-2xl bg-surface-container border border-outline-variant/5">
-<h3 class="text-primary text-2xl font-extrabold uppercase tracking-[0.25em] mb-6 sm:mb-8" style="">Backend</h3>
+<h3 class="text-primary text-2xl font-extrabold uppercase tracking-[0.25em] mb-6 sm:mb-8">Backend</h3>
 <div class="flex flex-wrap gap-3">
-<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base" style="">Node.js</span>
-<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base" style="">Express JS</span>
-<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base" style="">MySQL</span>
-<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base" style="">MongoDB</span>
-<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base" style="">PostgreSQL</span>
+<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base inline-flex items-center gap-2">
+  <span class="iconify text-lg" aria-hidden="true" data-icon="simple-icons:nodedotjs"></span>
+  Node.js
+</span>
+<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base inline-flex items-center gap-2">
+  <span class="iconify text-lg" aria-hidden="true" data-icon="simple-icons:express"></span>
+  Express JS
+</span>
+<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base inline-flex items-center gap-2">
+  <span class="iconify text-lg" aria-hidden="true" data-icon="simple-icons:mysql"></span>
+  MySQL
+</span>
+<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base inline-flex items-center gap-2">
+  <span class="iconify text-lg" aria-hidden="true" data-icon="simple-icons:mongodb"></span>
+  MongoDB
+</span>
+<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base inline-flex items-center gap-2">
+  <span class="iconify text-lg" aria-hidden="true" data-icon="simple-icons:postgresql"></span>
+  PostgreSQL
+</span>
 </div>
 </div>
 <!-- Languages -->
 <div class="p-6 sm:p-8 lg:p-10 rounded-2xl bg-surface-container border border-outline-variant/5">
-<h3 class="text-primary text-2xl font-extrabold uppercase tracking-[0.25em] mb-6 sm:mb-8" style="">Languages</h3>
+<h3 class="text-primary text-2xl font-extrabold uppercase tracking-[0.25em] mb-6 sm:mb-8">Languages</h3>
 <div class="flex flex-wrap gap-3">
-<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base" style="">Javascript</span>
-<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base" style="">Typescript</span>
+<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base inline-flex items-center gap-2">
+  <span class="iconify text-lg" aria-hidden="true" data-icon="simple-icons:javascript"></span>
+  Javascript
+</span>
+<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base inline-flex items-center gap-2">
+  <span class="iconify text-lg" aria-hidden="true" data-icon="simple-icons:typescript"></span>
+  Typescript
+</span>
 </div>
 </div>
 <!-- Tools -->
 <div class="p-6 sm:p-8 lg:p-10 rounded-2xl bg-surface-container border border-outline-variant/5">
-<h3 class="text-primary text-2xl font-extrabold uppercase tracking-[0.25em] mb-6 sm:mb-8" style="">Tools</h3>
+<h3 class="text-primary text-2xl font-extrabold uppercase tracking-[0.25em] mb-6 sm:mb-8">Tools</h3>
 <div class="flex flex-wrap gap-3">
-<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base" style="">GIT</span>
-<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base" style="">GITHUB</span>
-<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base" style="">VS Code</span>
-<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base" style="">Antigravity</span>
-<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base" style="">Postman</span>
-<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base" style="">MongoDB</span>
+<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base inline-flex items-center gap-2">
+  <span class="iconify text-lg" aria-hidden="true" data-icon="simple-icons:git"></span>
+  GIT
+</span>
+<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base inline-flex items-center gap-2">
+  <span class="iconify text-lg" aria-hidden="true" data-icon="simple-icons:github"></span>
+  GITHUB
+</span>
+<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base inline-flex items-center gap-2">
+  <span class="iconify text-lg" aria-hidden="true" data-icon="simple-icons:visualstudiocode"></span>
+  VS Code
+</span>
+<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base inline-flex items-center gap-2">
+  <span class="material-symbols-outlined text-lg" aria-hidden="true">auto_awesome</span>
+  Antigravity
+</span>
+<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base inline-flex items-center gap-2">
+  <span class="iconify text-lg" aria-hidden="true" data-icon="simple-icons:postman"></span>
+  Postman
+</span>
+<span class="px-3 sm:px-4 py-2 bg-surface-container-highest rounded text-on-surface font-medium text-sm sm:text-base inline-flex items-center gap-2">
+  <span class="iconify text-lg" aria-hidden="true" data-icon="simple-icons:mongodb"></span>
+  MongoDB
+</span>
 </div>
 </div>
 </div>
@@ -217,8 +327,8 @@
 <section class="pt-12 sm:pt-16 lg:pt-20 pb-12 sm:pb-16 lg:pb-20 px-6 sm:px-10 lg:px-12 bg-surface-container-low scroll-mt-28 sm:scroll-mt-32" id="work">
 <div class="max-w-screen-2xl mx-auto">
 <div class="mb-12 sm:mb-16 lg:mb-24">
-<h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-4 sm:mb-6" style="">Selected Works.</h2>
-<p class="text-on-surface-variant text-lg sm:text-xl lg:text-2xl max-w-2xl" style="">A showcase of projects that push the boundaries of frontend engineering.</p>
+<h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-4 sm:mb-6">Selected Works.</h2>
+<p class="text-on-surface-variant text-lg sm:text-xl lg:text-2xl max-w-2xl">A showcase of projects that push the boundaries of frontend engineering.</p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-12 gap-8 sm:gap-12">
 <!-- Featured Project: Nexus AI Powered Chatbot -->
@@ -233,19 +343,34 @@ Your browser does not support the video tag.
 </div>
 <div class="lg:w-2/5 p-8 sm:p-12 lg:p-16 flex flex-col justify-center">
 <div class="flex flex-wrap gap-3 mb-6 sm:mb-8">
-<span class="px-4 py-1.5 bg-primary/20 text-primary text-xs font-bold uppercase tracking-wider rounded-full" style="">React</span>
-<span class="px-4 py-1.5 bg-primary/20 text-primary text-xs font-bold uppercase tracking-wider rounded-full" style="">Typescript</span>
-<span class="px-4 py-1.5 bg-primary/20 text-primary text-xs font-bold uppercase tracking-wider rounded-full" style="">Python</span>
-<span class="px-4 py-1.5 bg-primary/20 text-primary text-xs font-bold uppercase tracking-wider rounded-full" style="">AI</span>
-<span class="px-4 py-1.5 bg-primary/20 text-primary text-xs font-bold uppercase tracking-wider rounded-full" style="">Tailwind CSS</span>
+<span class="px-4 py-1.5 bg-primary/20 text-primary text-xs font-bold uppercase tracking-wider rounded-full inline-flex items-center gap-2">
+  <span class="iconify text-base" aria-hidden="true" data-icon="simple-icons:react"></span>
+  React
+</span>
+<span class="px-4 py-1.5 bg-primary/20 text-primary text-xs font-bold uppercase tracking-wider rounded-full inline-flex items-center gap-2">
+  <span class="iconify text-base" aria-hidden="true" data-icon="simple-icons:typescript"></span>
+  Typescript
+</span>
+<span class="px-4 py-1.5 bg-primary/20 text-primary text-xs font-bold uppercase tracking-wider rounded-full inline-flex items-center gap-2">
+  <span class="iconify text-base" aria-hidden="true" data-icon="simple-icons:python"></span>
+  Python
+</span>
+<span class="px-4 py-1.5 bg-primary/20 text-primary text-xs font-bold uppercase tracking-wider rounded-full inline-flex items-center gap-2">
+  <span class="material-symbols-outlined text-base" aria-hidden="true">smart_toy</span>
+  AI
+</span>
+<span class="px-4 py-1.5 bg-primary/20 text-primary text-xs font-bold uppercase tracking-wider rounded-full inline-flex items-center gap-2">
+  <span class="iconify text-base" aria-hidden="true" data-icon="simple-icons:tailwindcss"></span>
+  Tailwind CSS
+</span>
 </div>
-<h3 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6" style="">Nexus AI powered chatbot</h3>
-<p class="text-on-surface-variant text-base sm:text-lg lg:text-xl mb-8 sm:mb-10 leading-relaxed" style="">
+<h3 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">Nexus AI powered chatbot</h3>
+<p class="text-on-surface-variant text-base sm:text-lg lg:text-xl mb-8 sm:mb-10 leading-relaxed">
                                     Frontend developer responsible for building a highly responsive, intuitive interface. 
                                     Engineered smooth animation transitions and integrated real-time AI API responses 
                                     to ensure a seamless user experience across all modern web browsers.
                                 </p>
-<a class="inline-flex items-center gap-4 text-primary font-bold text-base sm:text-lg hover:gap-6 transition-all" href="http://64.227.60.150/" style="">View Project <span class="material-symbols-outlined text-2xl" style="">arrow_forward</span></a>
+<a class="inline-flex items-center gap-4 text-primary font-bold text-base sm:text-lg hover:gap-6 transition-all" href="http://64.227.60.150/">View Project <span class="material-symbols-outlined text-2xl">arrow_forward</span></a>
 </div>
 </div>
 </div>
@@ -258,23 +383,23 @@ Your browser does not support the video tag.
 <div class="max-w-screen-2xl mx-auto">
 <div class="glass-panel p-8 sm:p-12 lg:p-20 rounded-2xl sm:rounded-[40px] border border-outline-variant/10 shadow-2xl flex flex-col lg:flex-row gap-12 sm:gap-20 lg:gap-32 items-center">
 <div class="lg:w-1/2 w-full">
-<h2 class="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tighter mb-8 sm:mb-12" style="">Let's build something <span class="text-primary italic" style="">extraordinary</span>.</h2>
-<p class="text-lg sm:text-xl lg:text-2xl text-on-surface-variant mb-10 sm:mb-16" style="">I'm currently open to new opportunities or specialized freelance consulting for design-driven products.</p>
+<h2 class="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tighter mb-8 sm:mb-12">Let's build something <span class="text-primary italic">extraordinary</span>.</h2>
+<p class="text-lg sm:text-xl lg:text-2xl text-on-surface-variant mb-10 sm:mb-16">I'm currently open to new opportunities or specialized freelance consulting for design-driven products.</p>
 <div class="space-y-7 sm:space-y-10">
-<a class="flex items-center gap-5 sm:gap-6 text-lg sm:text-xl lg:text-2xl font-medium hover:text-primary transition-colors" href="mailto:vtwinomugisha@gmail.com" style="">
-<span class="material-symbols-outlined text-3xl sm:text-4xl text-primary" style="">mail</span>
+<a class="flex items-center gap-5 sm:gap-6 text-lg sm:text-xl lg:text-2xl font-medium hover:text-primary transition-colors" href="mailto:vtwinomugisha@gmail.com">
+<span class="material-symbols-outlined text-3xl sm:text-4xl text-primary">mail</span>
                                 vtwinomugisha@gmail.com
                             </a>
 <a class="flex items-center gap-5 sm:gap-6 text-lg sm:text-xl lg:text-2xl font-medium hover:text-primary transition-colors" href="https://github.com/Twino-Vie" rel="noopener noreferrer" target="_blank">
 <span class="material-symbols-outlined text-3xl sm:text-4xl text-primary">code</span>
                                 github.com/Twino-Vie
                             </a>
-<a class="flex items-center gap-5 sm:gap-6 text-lg sm:text-xl lg:text-2xl font-medium hover:text-primary transition-colors" href="tel:+256787217064" style="">
-<span class="material-symbols-outlined text-3xl sm:text-4xl text-primary" style="">call</span>
+<a class="flex items-center gap-5 sm:gap-6 text-lg sm:text-xl lg:text-2xl font-medium hover:text-primary transition-colors" href="tel:+256787217064">
+<span class="material-symbols-outlined text-3xl sm:text-4xl text-primary">call</span>
                                 +256 787217064
                             </a>
-<div class="flex items-center gap-5 sm:gap-6 text-lg sm:text-xl lg:text-2xl font-medium text-on-surface-variant" style="">
-<span class="material-symbols-outlined text-3xl sm:text-4xl text-primary" style="">location_on</span>
+<div class="flex items-center gap-5 sm:gap-6 text-lg sm:text-xl lg:text-2xl font-medium text-on-surface-variant">
+<span class="material-symbols-outlined text-3xl sm:text-4xl text-primary">location_on</span>
                                 Kampala, Uganda
                             </div>
 </div>
@@ -290,7 +415,7 @@ Your browser does not support the video tag.
 <div class="relative">
 <textarea class="w-full bg-transparent border-b-2 border-outline-variant/30 py-4 sm:py-6 focus:border-primary focus:ring-0 outline-none transition-colors text-lg sm:text-2xl placeholder:text-outline-variant resize-none" id="message" placeholder="How can I help you?" rows="4"></textarea>
 </div>
-<button class="w-full py-5 sm:py-8 bg-primary text-on-primary font-bold text-lg sm:text-2xl rounded-2xl hover:bg-primary-container transition-colors shadow-2xl shadow-primary/20" style="">Send Inquiry</button>
+<button class="w-full py-5 sm:py-8 bg-primary text-on-primary font-bold text-lg sm:text-2xl rounded-2xl hover:bg-primary-container transition-colors shadow-2xl shadow-primary/20">Send Inquiry</button>
 </form>
 </div>
 </div>
@@ -300,7 +425,7 @@ Your browser does not support the video tag.
 <!-- Footer -->
 <footer class="bg-slate-950 w-full py-12 sm:py-16 lg:py-24 px-6 sm:px-10 lg:px-12 border-t border-slate-800/50">
 <div class="flex flex-col md:flex-row justify-between items-center gap-8 sm:gap-12 w-full max-w-screen-2xl mx-auto font-['Inter'] text-sm sm:text-base lg:text-lg tracking-wide">
-<p class="text-slate-500 text-center md:text-left" style="">© 2026 Vivian Twinomugisha. Built with Precision.</p>
+<p class="text-slate-500 text-center md:text-left">© 2026 Vivian Twinomugisha. Built with Precision.</p>
 <div class="flex flex-wrap justify-center gap-6 sm:gap-12">
 </div>
 </div>
