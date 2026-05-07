@@ -82,56 +82,7 @@
             }
         }
     </script>
-<style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        body { font-family: 'Inter', sans-serif; background-color: #060e20; font-size: 1.125rem; }
-        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
-        .glass-panel {
-            background: rgba(25, 37, 64, 0.6);
-            backdrop-filter: blur(24px);
-        }
-
-        @keyframes nameReveal {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes nameFloat {
-          0%, 100% {
-            transform: translateY(0);
-          }
-          50% {
-            transform: translateY(-6px);
-          }
-        }
-
-        @keyframes nameGradient {
-          0%, 100% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-        }
-
-        @media (prefers-reduced-motion: no-preference) {
-            .name-reveal {
-                opacity: 0;
-                transform: translateY(12px);
-            background-size: 200% 200%;
-            background-position: 0% 50%;
-            will-change: transform, opacity, background-position;
-            animation:
-              nameReveal 900ms ease-out 200ms forwards,
-              nameFloat 4s ease-in-out 1200ms infinite,
-              nameGradient 6s ease-in-out 1200ms infinite;
-            }
-        }
-    </style>
+<link rel="stylesheet" href="style.css" />
 </head>
 <body class="text-on-surface selection:bg-primary selection:text-on-primary overflow-x-hidden">
 <!-- Top Navigation Bar -->
@@ -331,7 +282,7 @@
 <div class="flex flex-col lg:flex-row min-h-[420px] sm:min-h-[500px]">
 <div class="lg:w-3/5 relative overflow-hidden aspect-[16/10] sm:aspect-[16/9] lg:aspect-auto">
 <video class="w-full h-full object-contain object-center transition duration-700" autoplay loop muted playsinline preload="metadata">
-<source src="Demo%20video%20(1).mp4" type="video/mp4"/>
+<source src="public/Demo%20video%20(1).mp4" type="video/mp4"/>
 Your browser does not support the video tag.
 </video>
 <div class="absolute inset-0 bg-gradient-to-r from-surface-container-high via-transparent to-transparent opacity-60 pointer-events-none"></div>
@@ -353,7 +304,45 @@ Your browser does not support the video tag.
 <a class="inline-flex items-center gap-4 text-primary font-bold text-base sm:text-lg hover:gap-6 transition-all" href="http://64.227.60.150/" style="">View Project <span class="material-symbols-outlined text-2xl" style="">arrow_forward</span></a>
 </div>
 </div>
-</div>
+<!-- New Project: Y4Chicks Poultry Marketplace -->
+<div class="md:col-span-12 group relative overflow-hidden rounded-2xl bg-surface-container-high border border-outline-variant/10 transition-all duration-500 hover:shadow-[0_0_80px_-20px_rgba(159,167,255,0.15)]">
+  <div class="flex flex-col lg:flex-row min-h-[420px] sm:min-h-[500px]">
+    <div class="lg:w-3/5 relative overflow-hidden aspect-[16/10] sm:aspect-[16/9] lg:aspect-auto">
+      <video class="w-full h-full object-contain object-center transition duration-700" autoplay loop muted playsinline preload="metadata">
+        <source src="public/Demo%20video%20for%20y4chics.mp4" type="video/mp4"/>
+        Your browser does not support the video tag.
+      </video>
+      <div class="absolute inset-0 bg-gradient-to-r from-surface-container-high via-transparent to-transparent opacity-60 pointer-events-none"></div>
+    </div>
+    <div class="lg:w-2/5 p-8 sm:p-12 lg:p-16 flex flex-col justify-center">
+      <div class="flex flex-wrap gap-3 mb-6 sm:mb-8">
+        <span class="px-4 py-1.5 bg-primary/20 text-primary text-xs font-bold uppercase tracking-wider rounded-full inline-flex items-center gap-2">
+          <span class="iconify text-base" aria-hidden="true" data-icon="simple-icons:html5"></span>
+          HTML
+        </span>
+        <span class="px-4 py-1.5 bg-primary/20 text-primary text-xs font-bold uppercase tracking-wider rounded-full inline-flex items-center gap-2">
+          <span class="iconify text-base" aria-hidden="true" data-icon="simple-icons:css3"></span>
+          CSS
+        </span>
+        <span class="px-4 py-1.5 bg-primary/20 text-primary text-xs font-bold uppercase tracking-wider rounded-full inline-flex items-center gap-2">
+          <span class="iconify text-base" aria-hidden="true" data-icon="simple-icons:javascript"></span>
+          JavaScript
+        </span>
+        <span class="px-4 py-1.5 bg-primary/20 text-primary text-xs font-bold uppercase tracking-wider rounded-full inline-flex items-center gap-2">
+          <span class="iconify text-base" aria-hidden="true" data-icon="simple-icons:nodejs"></span>
+          Node.js
+        </span>
+        <span class="px-4 py-1.5 bg-primary/20 text-primary text-xs font-bold uppercase tracking-wider rounded-full inline-flex items-center gap-2">
+          <span class="iconify text-base" aria-hidden="true" data-icon="simple-icons:express"></span>
+          Express
+        </span>
+      </div>
+      <h3 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">Y4Chicks Poultry Marketplace</h3>
+      <p class="text-on-surface-variant text-base sm:text-lg lg:text-xl mb-8 sm:mb-10 leading-relaxed">
+        Developed a digital marketplace for ordering chicks and poultry feed directly from farmers, reducing reliance on intermediaries and improving price transparency. Implemented features for product listing, availability tracking, and seamless order placement, creating a smooth experience for both farmers and consumers. Prioritized usability and accessibility to help users quickly find and purchase essential poultry inputs.
+      </p>
+    </div>
+  </div>
 </div>
 </div>
 </div>
